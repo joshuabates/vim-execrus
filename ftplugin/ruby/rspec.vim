@@ -9,11 +9,12 @@ function! g:RunRubySpec(path)
     let cmd = g:SpringRubyCommand('rspec') . a:path
   endif
 
+  echom 'cmd: '.cmd
   return cmd
 endfunction
 
 function! g:RubySpec()
-  exec g:RunRubySpec(expand("%"))
+  call g:ExecrusShell(g:RunRubySpec(expand("%")))
 endfunction
 
 call g:AddExecrusPlugin({
@@ -37,7 +38,7 @@ endfunction
 
 function! g:RubyExecuteRspec()
   let test_name = g:RubyRSpecTestName()
-  exec g:RunRubySpec(test_name)
+  call g:ExecrusShell(g:RunRubySpec(test_name))
 endfunction
 
 call g:AddExecrusPlugin({
@@ -54,7 +55,7 @@ function! g:RubyRspecLineExecute()
   let cmd = g:RunRubySpec(expand("%"))
   let cmd .= ":" . line('.')
 
-  exec cmd
+  call g:ExecrusShell(cmd)
 endfunction
 
 call g:AddExecrusPlugin({

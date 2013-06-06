@@ -1,5 +1,5 @@
 function! g:RubyStartingCommand()
-  let cmd = "!"
+  let cmd = ""
 
   if filereadable("./Gemfile")
     let cmd .= "bundle exec "
@@ -28,7 +28,7 @@ function! g:SpringRubyCommand(framework)
     return 0
   endif
 
-  let cmd = "!spring " . a:framework
+  let cmd = "spring " . a:framework . " "
 
   return cmd
 endfunction

@@ -13,7 +13,7 @@ function! g:RunRubyTest(path)
 endfunction
 
 function! g:RubyTest()
-  exec g:RunRubyTest(expand("%"))
+  call g:ExecrusShell(g:RunRubyTest(expand("%")))
 endfunction
 
 call g:AddExecrusPlugin({
@@ -54,7 +54,7 @@ endfunction
 
 function! g:RubyExecuteTestUnit()
   let test_name = g:RubyTestUnitTestName()
-  exec g:RunRubyTest(test_name)
+  call g:ExecrusShell(test_name)
 endfunction
 
 call g:AddExecrusPlugin({
@@ -117,7 +117,7 @@ function! g:RubyTestLineExecute()
   let cmd = g:RunRubyTest(expand("%"))
   let cmd .= " -n /" . g:GetTestName()  . '/'
 
-  exec cmd
+  call g:ExecrusShell(cmd)
 endfunction
 
 call g:AddExecrusPlugin({

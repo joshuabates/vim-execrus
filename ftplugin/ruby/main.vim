@@ -3,7 +3,7 @@
 " This plugin runs the current file with Ruby.
 call g:AddExecrusPlugin({
   \'name': 'Default Ruby',
-  \'exec': '!ruby %'
+  \'exec': 'ruby %'
 \})
 
 " NAME: Ruby Gemfile
@@ -12,7 +12,7 @@ call g:AddExecrusPlugin({
 " it.
 call g:AddExecrusPlugin({
   \'name': 'Ruby Gemfile',
-  \'exec': '!bundle install',
+  \'exec': 'bundle install',
   \'cond': '\(Gemfile\|gemspec\)',
   \'prev': "Default Ruby"
 \})
@@ -22,5 +22,5 @@ call g:AddExecrusPlugin({
 " Open a Ruby REPL!
 call g:AddExecrusPlugin({
   \'name': 'Ruby REPL',
-  \'exec': '!irb',
+  \'exec': 'irb',
 \}, 'repl')

@@ -1,3 +1,15 @@
+function! g:ExecrusShell(cmd)
+  if exists("g:execrus_runner") && g:execrus_runner != 'exec'
+    if g:execrus_runner == 'vimux'
+      call VimuxRunCommand(a:cmd)
+    elseif g:execrus_runner == 'dispatch'
+      exec ":Dispatch " . a:cmd
+    endif
+  else
+    exec '!'.a:cmd
+  endif
+endfunction
+
 function! s:PluginMeetsCondition(plugin)
   if has_key(a:plugin, 'cond')
     if type(a:plugin['cond']) == type(function('tr'))
@@ -84,7 +96,7 @@ function! s:ExecutePlugin(plugin)
   endif
 
   if g:execrus_clear
-    silent! execute "!clear"
+    " silent! execute "!clear"
   endif
 
   if type(a:plugin['exec']) == type(function('tr'))
